@@ -4,7 +4,6 @@ import path from "path"
 
 // https://vite.dev/config/
 export default defineConfig({
-  base: "Artify", // Replace with your actual repository name
   plugins: [react()],
   resolve: {
     alias: {
