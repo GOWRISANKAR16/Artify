@@ -94,29 +94,28 @@ const ImageGenerator = () => {
           </form>
         </CardContent>
         <CardFooter className="flex flex-col items-center space-y-4">
-          {generatedImage && (
-            <motion.img
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.5 }}
-              src={generatedImage}
-              alt="Generated"
-              className="w-full h-auto rounded-lg shadow-lg"
-            />
-          )}
-          {!generatedImage && (
+          {generatedImage ? (
+            <>
+              <motion.img
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.5 }}
+                src={generatedImage}
+                alt="Generated"
+                className="w-full h-auto rounded-lg shadow-lg"
+              />
+              <Button
+                onClick={handleDownloadImage}
+                className="bg-pink-500 hover:bg-pink-600 text-white font-medium px-4 py-2 rounded transition"
+              >
+                Download Image
+              </Button>
+            </>
+          ) : (
             <p className="text-white/70 text-center mt-4">
               Your generated image will appear here. Let your imagination run wild!
             </p>
           )}
-          <div className="flex space-x-4">
-            <Button
-              onClick={handleDownloadImage}
-              className="bg-pink-500 hover:bg-pink-600 text-white font-medium px-4 py-2 rounded transition"
-            >
-              Download Image
-            </Button>
-          </div>
         </CardFooter>
       </Card>
     </motion.div>
