@@ -4,6 +4,12 @@ import { Toaster } from "sonner";
 import { useState } from "react";
 
 export default function App() {
+  const [generatedImage, setGeneratedImage] = useState(null);
+
+  const handleImageGenerated = (imageUrl) => {
+    setGeneratedImage(imageUrl); // Update state with the new image URL
+  };
+
   return (
     <div className="flex flex-col min-h-screen w-full text-white">
       <AnimatedBackground />
@@ -15,8 +21,15 @@ export default function App() {
           Transform your ideas into stunning visuals
         </p>
       </header>
-      <main className="flex-grow flex items-center justify-center p-8 sm:p-10 md:p-12">
-        <ImageGenerator />
+      <main className="flex-grow flex flex-col items-center justify-center p-8 sm:p-10 md:p-12 space-y-6">
+        <ImageGenerator onImageGenerated={handleImageGenerated} />
+        {generatedImage && (
+          <img
+            src={generatedImage}
+            alt="Generated"
+            className="mt-4 max-w-full rounded-lg shadow-lg"
+          />
+        )}
       </main>
       <footer className="py-6 px-4 text-center text-white/50 text-sm">
         <p>&copy; 2025 Artify. All rights reserved.</p>
