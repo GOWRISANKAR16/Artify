@@ -11,8 +11,7 @@ const ImageGenerator = () => {
   const [prompt, setPrompt] = useState("");
   const [generatedImage, setGeneratedImage] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
-  const monsterApiKey =
-    "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6ImNhOWVjODlkN2NjNWZlNmFhODQ3Nzk2NzAxYWQ2M2ExIiwiY3JlYXRlZF9hdCI6IjIwMjUtMDEtMjBUMTM6MTE6MzcuODk3MjExIn0.2dDR4EeGgHlwwK4DesH1JXqhbQS8aiDp4-SSYD0qguk";
+  const monsterApiKey = import.meta.env.VITE_MONSTER_KEY;
 
   const handleGenerateImage = async (prompt: string) => {
     setIsLoading(true);
